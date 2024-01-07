@@ -1,0 +1,81 @@
+:root {
+  --bg: #5C8374;
+  --color: #fff;
+  --color-dark: #1B4242;
+  --color-light: #9EC8B9;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  gap: 2rem;
+  background: var(--bg);
+  font: 2rem/1.5 'Montserrat', sans-serif;
+  color: #fff;
+  height: 100vh;
+}
+
+.d-flex {
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.link-1 {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+
+.link-1 span {
+  display: block;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.link-1 span::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 100%;
+  color: var(--color-dark);
+}
+
+.link-1:hover span {
+  transform: translateY(-100%);
+}
+
+.link-2 {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-dark);
+  position: relative;
+}
+
+.link-2::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--color);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.link-2:hover::before {
+  transform: scale(0.9);
+  opacity: 0;
+}

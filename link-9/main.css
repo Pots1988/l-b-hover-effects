@@ -1,0 +1,127 @@
+:root {
+  --bg: #687EFF;
+  --color: #FEFFAC;
+  --color-dark: #A6FF96;
+  --color-hover: #FFA1F5;
+  --shadow-size: 0.1em;
+  --shadow-size-inverse: calc(-1 * var(--shadow-size));
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+@keyframes text-shadow {
+  0%,
+  100% {
+    text-shadow: 0 var(--shadow-size-inverse)
+    var(--shadow-size) var(--shadow-color);
+  }
+
+  25% {
+    text-shadow: var(--shadow-size) 0
+    var(--shadow-size) var(--shadow-color);
+  }
+
+  50% {
+    text-shadow: 0 var(--shadow-size)
+    var(--shadow-size) var(--shadow-color);
+  }
+
+  75% {
+    text-shadow: var(--shadow-size-inverse) 0
+    var(--shadow-size) var(--shadow-color);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  gap: 2rem;
+  row-gap: 4rem;
+  background: var(--bg);
+  font: 2rem/1.2 'Roboto Slab', sans-serif;
+  color: var(--color-dark);
+  height: 100vh;
+}
+
+h2 {
+  font: 700 3rem/1.2 'Rubik Scribble';
+  text-align: center;
+  margin: 0 0 1em;
+  color: var(--color);
+  animation: text-shadow infinite 5s linear both;
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  padding: 0.1em 1em;
+  transition: color 0.3s;
+}
+
+.link--sm {
+  font-size: 2rem;
+}
+
+.link--md {
+  font-size: 4rem;
+}
+
+.link--lg {
+  font-size: 6rem;
+}
+
+.link svg {
+  --width: 3%;
+  --line: 400%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  stroke: currentColor;
+  stroke-width: var(--width);
+  stroke-dasharray: var(--line);
+  stroke-dashoffset: var(--line);
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.455, 0.090, 0.160, 0.820);
+}
+
+.link:hover {
+  color: var(--color-hover);
+}
+
+.link:hover svg {
+  stroke-dashoffset: 0;
+}
+
+.link--outline svg {
+  stroke-dasharray: 360%;
+  stroke-dashoffset: 0;
+  transition: all 1.5s cubic-bezier(0.455, 0.090, 0.160, 0.820);
+}
+
+.link--outline:hover svg {
+  stroke-dasharray: 30% 330%;
+  stroke-dashoffset: 135%;
+}

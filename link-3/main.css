@@ -1,0 +1,98 @@
+:root {
+  --bg: #525CEB;
+  --color: #F8EDFF;
+  --color-dark: #BFCFE7;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  gap: 2rem;
+  row-gap: 4rem;
+  background: var(--bg);
+  font: 2rem/1.5 'Raleway', sans-serif;
+  color: var(--color);
+  height: 100vh;
+}
+
+h2 {
+  font: 700 3rem/1.2 'DM Serif Display', serif;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  color: var(--color-dark);
+  animation: text-shadow infinite 5s linear both;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  padding: 0.2em 0.5em;
+  --size: 2px;
+  --border-color: #fff;
+}
+
+.link--1::after,
+.link--1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--border-color);
+}
+
+.link::before {
+  right: 0;
+  height: var(--size);
+  transition: top 0.3s;
+}
+
+.link--1::after {
+  height: 0;
+  width: var(--size);
+  transition: height 0.3s;
+}
+
+.link--1:hover::before {
+  top: 100%;
+}
+
+.link--1:hover::after {
+  height: 100%;
+}
+
+.link--2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border-left: var(--size) var(--border-color) solid;
+  border-bottom: var(--size) var(--border-color) solid;
+  transition: height 0.3s;
+}
+
+.link--2:hover::before {
+  height: 100%;
+}

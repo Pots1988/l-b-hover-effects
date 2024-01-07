@@ -1,0 +1,125 @@
+:root {
+  --bg: #F8EDFF;
+  --color: #3D3B40;
+  --color-light: #525CEB;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  gap: 2rem;
+  row-gap: 4rem;
+  background: var(--bg);
+  font: 3rem/1.2 'Single Day', sans-serif;
+  color: var(--color);
+  height: 100vh;
+}
+
+h2 {
+  font: 700 4rem/1.2 'Single Day';
+  text-align: center;
+  margin: 0 0 0.5em;
+  color: var(--color-light);
+  animation: text-shadow infinite 5s linear both;
+}
+
+.d-flex {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  padding: 0.1em 0.6em;
+  transition: color 0.3s;
+  
+  --border-color: #ef4040;
+  --border-width: 0.0625em;
+  --border-size: 0.21em;
+  --border-shift: 0.1em;
+}
+
+.link::before,
+.link::after,
+.link span::before,
+.link span::after {
+  content: '';
+  position: absolute;
+  opacity: 0;
+  width: var(--border-size);
+  height: var(--border-size);
+  pointer-events: none;
+  border-color: var(--border-color);
+  border-style: solid;
+  transition: all 0.3s;
+}
+
+.link::before {
+  left: 0;
+  top: 0;
+  border-width: var(--border-width) 0 0 var(--border-width);
+}
+
+.link::after {
+  left: 0;
+  bottom: 0;
+  border-width: 0 0 var(--border-width) var(--border-width);
+}
+
+.link span::before {
+  right: 0;
+  top: 0;
+  border-width: var(--border-width) var(--border-width) 0 0;
+}
+
+.link span::after {
+  right: 0;
+  bottom: 0;
+  border-width: 0 var(--border-width) var(--border-width) 0;
+}
+
+.link:hover {
+  color: var(--border-color);
+}
+
+.link:hover::before {
+  left: var(--border-shift);
+  top: var(--border-shift);
+  opacity: 1;
+}
+
+.link:hover::after {
+  left: var(--border-shift);
+  bottom: var(--border-shift);
+  opacity: 1;
+}
+
+.link:hover span::before {
+  right: var(--border-shift);
+  top: var(--border-shift);
+  opacity: 1;
+}
+
+.link:hover span::after {
+  right: var(--border-shift);
+  bottom: var(--border-shift);
+  opacity: 1;
+}
