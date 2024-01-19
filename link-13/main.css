@@ -1,0 +1,142 @@
+:root {
+  --bg: #4ECDC4;
+  --color: #F7FFF7;
+  --header-color: #FFE66D;
+  --header-shadow: #B983FF;
+  --bg-btn: #096B72;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  gap: 2rem;
+  row-gap: 4rem;
+  background: var(--bg);
+  font: 2.5rem/1.2 "Noto Serif", serif;
+  color: var(--color);
+  height: 100vh;
+}
+
+@keyframes shadow {
+  0%,
+  100% {
+    text-shadow: 0.05em 0.05em 0 var(--header-shadow);
+  }
+
+  17% {
+    text-shadow: 0 0.05em 0 var(--header-shadow);
+  }
+
+  34% {
+    text-shadow: -0.05em 0.05em 0 var(--header-shadow);
+  }
+
+  51% {
+    text-shadow: -0.05em 0 0 var(--header-shadow);
+  }
+
+  68% {
+    text-shadow: -0.05em -0.05em 0 var(--header-shadow);
+  }
+
+  85% {
+    text-shadow: 0 -0.05em 0 var(--header-shadow);
+  }
+}
+
+h2 {
+  font: 400 6rem/1.2 'Luckiest Guy', cursive;
+  text-align: center;
+  margin: 0 0 0.25em;
+  color: var(--header-color);
+  animation: shadow 4s infinite linear;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.btn {
+  text-align: center;
+  text-decoration: none;
+  font: inherit;
+  font-size: 2rem;
+  color: inherit;
+  display: inline-flex;
+  justify-content: center;
+  min-width: 10em;
+  background: var(--bg-btn);
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.btn span {
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.btn svg {
+  --size: 60%;
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  top: calc((100% - var(--size)) / 2);
+  left: calc((100% - var(--size)) / 2);
+  transition: transform 0.3s;
+}
+
+/* To bottom */
+.btn--bottom svg {
+  transform: translateY(-200%);
+}
+
+.btn--bottom:hover svg {
+  transform: translateY(0);
+}
+
+.btn--bottom:hover span {
+  transform: translateY(200%);
+}
+
+/* To right */
+.btn--right svg {
+  transform: translateX(-200%);
+}
+
+.btn--right:hover svg {
+  transform: translateX(0);
+}
+
+.btn--right:hover span {
+  transform: translateX(200%);
+}
