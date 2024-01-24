@@ -1,0 +1,137 @@
+:root {
+  --bg: #000;
+  --color: #F7FFF7;
+  --bg-btn: #000;
+  --gradient: #bda185, #f37055, #ef4e7b, #a166ab,
+  #5073b8, #1098ad, #07b39b, #6fba82;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  gap: 2rem;
+  row-gap: 4rem;
+  background: var(--bg);
+  font: 2.5rem/1.2 "Noto Serif", serif;
+  color: var(--color);
+  height: 100vh;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.btn {
+  text-align: center;
+  text-decoration: none;
+  font: inherit;
+  font-size: 2rem;
+  color: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 10em;
+  padding: 1em;
+  position: relative;
+  --border-size: 5px;
+  background-color: var(--bg-btn);
+  border-radius: var(--border-size);
+  border: var(--border-size) solid transparent;
+  background-clip: padding-box;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: calc(-1 * var(--border-size));
+  border-radius: inherit;
+}
+
+.btn--background::after {
+  background: linear-gradient(70deg, var(--gradient));
+  background-size: 300% 300%;
+  animation: background 2s ease alternate infinite;
+}
+
+@keyframes background {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.btn--rotate::after {
+  background: conic-gradient(from var(--deg), var(--gradient));
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    --deg: 0deg;
+  }
+  100% {
+    --deg: 360deg;
+  }
+}
+
+@property --deg {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.btn--hue::after {
+  background: linear-gradient(60deg, var(--gradient));
+  animation: hue 2s linear infinite;
+}
+
+@keyframes hue {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.btn--linear-gradient::after {
+  background: linear-gradient(var(--deg), var(--gradient));
+  animation: linear-rotate 2s linear infinite;
+}
+
+@keyframes linear-rotate {
+  0% {
+    --deg: 0deg;
+  }
+  100% {
+    --deg: 360deg;
+  }
+}
