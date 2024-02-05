@@ -1,0 +1,124 @@
+:root {
+  --bg: #89BD9E;
+  --color: #31493C;
+  --line-color: #FFFFFF;
+  --gradient: red, orange, yellow, green, rgb(0, 247, 255), blue, #ea00ff;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  gap: 2rem;
+  row-gap: 4rem;
+  background: var(--bg);
+  font: 2.5rem/1.2 "Noto Serif", serif;
+  color: var(--color);
+  height: 100vh;
+}
+
+h2 {
+  font: 400 5rem/1.2 "Black Ops One", system-ui;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 1em;
+  color: transparent;
+  background: repeating-linear-gradient(to bottom, var(--gradient));
+  background-size: 20% 20%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: move 3s linear infinite both;
+}
+
+h2 span {
+  color: initial;
+  -webkit-text-fill-color: initial;
+  animation: hidden 1.5s linear infinite;
+}
+
+@keyframes move {
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes hidden {
+  100% {
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.btn {
+  font: inherit;
+  font-size: 2rem;
+  background: none;
+  border: 0;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5em;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.btn::after,
+.btn::before {
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: var(--line-color);
+  opacity: 0;
+  left: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.btn::before {
+  top: 0;
+  transform: translateY(-0.5em);
+}
+
+.btn::after {
+  bottom: 0;
+  transform: translateY(0.5em);
+}
+
+.btn:hover {
+  color: var(--line-color);
+}
+
+.btn:hover::before,
+.btn:hover::after {
+  transform: translate(0);
+  opacity: 1;
+}
